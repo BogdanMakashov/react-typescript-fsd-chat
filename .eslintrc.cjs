@@ -13,6 +13,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import'],
   rules: {
+    'react-hooks/exhaustive-deps': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'prettier/prettier': [
       'warn',
@@ -53,25 +54,6 @@ module.exports = {
         },
       },
     ],
-    // 'import/order': [
-    //   'error',
-    //   {
-    //     pathGroups: [
-    //       {
-    //         pattern: '@/**',
-    //         group: 'internal',
-    //         position: 'after',
-    //       },
-    //     ],
-    //     groups: ['builtin', 'external', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object', 'type'],
-    //   },
-    // ],
-    // 'import/resolver': {
-    //   typescript: {
-    //     extensions: ['.js', '.jsx'],
-    //   },
-    // },
-    // 'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
   },
   settings: {
     'import/resolver': {

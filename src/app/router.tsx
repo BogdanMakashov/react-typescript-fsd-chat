@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { Chat } from '@/pages/chat';
 import { SignIn } from '@/pages/sign-in';
 import { ROUTE_PATHS } from '@/shared/router/constants';
 
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTE_PATHS.chat,
-        element: <div>Chat</div>,
+        element: <Chat />,
       },
       {
         path: ROUTE_PATHS.profile,
