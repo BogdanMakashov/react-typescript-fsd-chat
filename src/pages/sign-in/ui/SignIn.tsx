@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
-import { useAuthState } from '@/features/auth/model/useAuthState';
+import { SignOutButton, useAuthState } from '@/features/auth';
 import { UiButton, UiInput } from '@/shared/ui';
 
 type FormState = {
@@ -46,6 +46,8 @@ export const SignIn: React.FC = () => {
       </div>
       <div>
         <UiButton type="submit">Войти</UiButton>
+
+        <SignOutButton />
       </div>
     </form>
   );

@@ -15,7 +15,7 @@ type UseUsersState = {
   getUserById: (id: string) => void;
 };
 
-export const useUsersState = create<UseUsersState>((set, get) => ({
+export const useUsersState = create<UseUsersState>(() => ({
   currentUser: null,
   getUserById: (id: string) => {
     console.log('👻 ----------------------------------------------👻');
