@@ -1,6 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
-import { SignOutButton, useAuthState } from '@/features/auth';
+import { useAuthState } from '@/features/auth';
+import { ROUTE_PATHS } from '@/shared/router/constants';
 import { UiButton, UiInput } from '@/shared/ui';
 
 type FormState = {
@@ -14,7 +16,11 @@ export const SignIn: React.FC = () => {
     password: '',
   });
 
-  const signIn = useAuthState((state) => state.signIn);
+  const [signIn, supabaseUse] = useAuthState((state) => [state.signIn, state.supabaseUser]);
+
+  if (supabaseUse) {
+    return <Navigate to={ROUTE_PATHS.chat} />;
+  }
 
   const onChangeHadler = (event: ChangeEvent<HTMLInputElement>) => {
     setFormState((prevState) => ({
@@ -35,20 +41,20 @@ export const SignIn: React.FC = () => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <h1>Авторизация</h1>
+    <div className="flex h-lvh w-lvw items-center justify-center bg-gray-950">
+      <form onSubmit={onSubmitHandler} className="w-96">
+        <h1 className="mb-5 text-3xl text-white">Авторизация</h1>
 
-      <div>
-        <UiInput id="email" name="email" labelText="Email" onChange={onChangeHadler} />
-      </div>
-      <div>
-        <UiInput type="password" id="password" name="password" labelText="Пароль" onChange={onChangeHadler} />
-      </div>
-      <div>
-        <UiButton type="submit">Войти</UiButton>
-
-        <SignOutButton />
-      </div>
-    </form>
+        <div className="mb-4">
+          <UiInput id="email" name="email" labelText="Email" onChange={onChangeHadler} />
+        </div>
+        <div className="mb-4">
+          <UiInput type="password" id="password" name="password" labelText="Пароль" onChange={onChangeHadler} />
+        </div>
+        <div className="flex justify-stretch">
+          <UiButton type="submit">Войти</UiButton>
+        </div>
+      </form>
+    </div>
   );
 };
